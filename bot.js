@@ -27,7 +27,7 @@ if (process.env.MONGO_URI) {
   var mongoStorage = require('botkit-storage-mongo')({mongoUri: process.env.MONGO_URI});
   bot_options.storage =  mongoStorage; 
 } else if (process.env.FIREBASE_URI) {
-  var firebaseStorage = require('botkit-storage-firebase')({databaseURL: process.env.FIREBASE_URI});
+  var firebaseStorage = require('botkit-storage-firebase')({ databaseURL: process.env.FIREBASE_URI });
   bot_options.storage = firebaseStorage;
 } else {
   bot_options.json_file_store = __dirname + '/.data/db/';
@@ -35,7 +35,6 @@ if (process.env.MONGO_URI) {
 
 // Create the Botkit controller, which controls all instances of the bot.
 var controller = Botkit.slackbot(bot_options);
-
 controller.startTicking();
 
 // Set up an Express-powered webserver to expose oauth and webhook endpoints
