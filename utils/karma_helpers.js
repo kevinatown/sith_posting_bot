@@ -19,8 +19,8 @@ const setKarma = (value, user, controller) => {
 };
 
 const userExsists = (user, controller) => {
-  const user = controller.storage.users.get(user);
-  return !_.isNil(user);
+  const userObj = controller.storage.users.get(user);
+  return !_.isNil(userObj);
 };
 
 const getCurrentKarma = (user, controller) => {
