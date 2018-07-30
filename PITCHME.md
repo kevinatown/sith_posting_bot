@@ -1,12 +1,16 @@
-## Bot making with Botkit and Glitch
+# Bot making with Botkit and Glitch
 
 ---
 
-
+## Road Map
+- configuring slack
+- botkit basics
+- bot hears
+- middleware
 
 ---
 
-### Configuring Slack
+## Configuring Slack
 - Basic Information
 - Interactive Components
 - OAuth & Permissions
@@ -48,3 +52,32 @@ Show basic info about your app. You can set your app's icon here. But most impor
 Set your bot's **Display name** and **Default username**
 
 ---
+
+## Botkit Basics
+
+A javascript framework for building bots. Basically, it's an express webserver listening on `/slack/receive` for messages from slack and gets passed to Botkit. Most of the time text processing is done through the `.hears()` function, but the bot can also reply to a bunch of other [events](https://botkit.ai/docs/core.html).
+
+---
+
+## Bot Hears
+
+An event trigger to have your bot listen for either regular expressions or straight text match.
+
+- (incoming message events)[https://botkit.ai/docs/core.html]
+- [bot.reply()](https://botkit.ai/docs/core.html#botreply)
+- [bot.startConversation()](https://botkit.ai/docs/core.html#botstartconversation)
+
+---
+
+## Middleware
+
+Botkit can get extended by [3rd party](https://botkit.ai/docs/readme-middlewares.html) or custom [middleware](https://botkit.ai/docs/middleware.html). 
+
+- When receiving a message, before triggering any events
+- When sending a message, before the message is sent to the API
+- When hearing a message
+- When matching patterns with hears(), after the pattern has been matched but before the handler function is called
+- When capturing a users response to a convo.ask() question, after the user has answered, but before the value is stored or passed to the handler function
+
+---
+
