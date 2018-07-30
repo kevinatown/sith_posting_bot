@@ -3,10 +3,11 @@
 ---
 
 ## Road Map
-- configuring slack
-- botkit basics
-- bot hears
-- middleware
+- Configuring Slack
+- Glitch
+- Botkit Basics
+- Bot Hears
+- Middleware
 
 ---
 
@@ -50,6 +51,14 @@ Show basic info about your app. You can set your app's icon here. But most impor
 ### Bot User
 
 Set your bot's **Display name** and **Default username**
+
+---
+
+## Glitch
+
+- NodeJs
+- .env files
+- remixing projects
 
 ---
 
