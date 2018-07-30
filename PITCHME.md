@@ -8,6 +8,7 @@
 - Botkit Basics
 - Bot Hears
 - Middleware
+- Slack Messages
 
 ---
 
@@ -89,4 +90,8 @@ Botkit can get extended by [3rd party](https://botkit.ai/docs/readme-middlewares
 - When capturing a users response to a convo.ask() question, after the user has answered, but before the value is stored or passed to the handler function
 
 ---
+
+## Slack Messages
+
+The basic building blocks of conversations on [slack](https://api.slack.com/docs/messages). Can be alot more than just plain text.
 
