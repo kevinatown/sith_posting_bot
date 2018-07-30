@@ -76,7 +76,7 @@ An event trigger to have your bot listen for either regular expressions or strai
 - [bot.reply()](https://botkit.ai/docs/core.html#botreply)
 - [bot.startConversation()](https://botkit.ai/docs/core.html#botstartconversation)
 
----
++++
 
 ## Middleware
 
