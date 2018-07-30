@@ -23,7 +23,7 @@ Show basic info about your app. You can set your app's icon here. But most impor
 
 ### Interactive Components
 
-**Interactivity** needs to be enabled and **Request URL** should be set to `https://<your_glitch_location>.glitch.me/slack/receive`.
+**Interactivity** needs to be enabled and **Request URL** should be set to https://<your_glitch_location>.glitch.me/slack/receive
 
 ---
 
@@ -39,7 +39,7 @@ Show basic info about your app. You can set your app's icon here. But most impor
 
 **Events** need to be enabled. This allows you bot to be notified of events in Slack (for example, when a user adds a reaction or creates a file). 
 
-**Request URL** should be set to: `https://<your_glitch_location>.glitch.me/slack/receive`
+**Request URL** should be set to: https://<your_glitch_location>.glitch.me/slack/receive
 
 ---
 
