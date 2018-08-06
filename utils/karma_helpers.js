@@ -18,36 +18,50 @@ const setKarma = (value, user, controller) => {
   });
 };
 
-const userExsists = (user, controller) => {
-  const userObj = controller.storage.users.get(user);
+const userExsists = async (user, controller) => {
+  const userObj = await getUser(user, controller);
   return !_.isNil(userObj);
 };
 
-const getCurrentKarma = (user, controller) => {
-  return _.get(controller.storage.users.get(user), 'karma');
+const getUser = async (user, controller) => {
+  let userObj;
+  const v2 = await controller.storage.users.get(user, (err, val) => {
+    userObj = val;
+    return val;
+  });
+  return userObj;
 };
 
-const addKarma = (user, controller) => {
-  if (userExsists(user)) {
-    const curKarma = getCurrentKarma(user, controller);
-    setKarma(curKarma + 1, user, controller);
+const getCurrentKarma = async (user, controller) => {
+  const curUser = await getUser(user, controller);
+  const ck = _.get(curUser, 'karma');
+  return ck;
+};
+
+const addKarma = async (user, controller) => {
+  const userExisits = await userExsists(user, controller);
+  if (userExisits) {
+    const curKarma = await getCurrentKarma(user, controller);
+    await setKarma(curKarma + 1, user, controller);
   } else {
-    intializeUser(user, controller);
+    await intializeUser(user, controller);
     setKarma(1, user, controller);
   }
 };
 
-const removeKarma = (user, controller) => {
-  if (userExsists(user)) {
-    const curKarma = getCurrentKarma(user, controller);
-    setKarma(curKarma - 1, user, controller);
+const removeKarma = async (user, controller) => {
+  const userExisits = await userExsists(user, controller);
+  if (userExisits) {
+    const curKarma = await getCurrentKarma(user, controller);
+    await setKarma(curKarma - 1, user, controller);
   } else {
-    intializeUser(user, controller);
-    setKarma(-1, user, controller);
+    await intializeUser(user, controller);
+    await setKarma(-1, user, controller);
   }
 };
 
 module.exports = {
   addKarma,
-  removeKarma
+  removeKarma,
+  getCurrentKarma
 };

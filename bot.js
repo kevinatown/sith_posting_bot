@@ -27,7 +27,15 @@ if (process.env.MONGO_URI) {
   var mongoStorage = require('botkit-storage-mongo')({mongoUri: process.env.MONGO_URI});
   bot_options.storage =  mongoStorage; 
 } else if (process.env.FIREBASE_URI) {
-  var firebaseStorage = require('botkit-storage-firebase')({ databaseURL: process.env.FIREBASE_URI });
+  var config = {
+    databaseURL: process.env.FIREBASE_URI,
+    apiKey: process.env.apiKey,
+    // authDomain: process.env.authDomain,
+    projectId: process.env.projectId,
+    storageBucket: process.env.storageBucket,
+    messagingSenderId: process.env.messagingSenderId
+  };
+  var firebaseStorage = require('./utils/firebase.js')(config);
   bot_options.storage = firebaseStorage;
 } else {
   bot_options.json_file_store = __dirname + '/.data/db/';
@@ -36,6 +44,10 @@ if (process.env.MONGO_URI) {
 // Create the Botkit controller, which controls all instances of the bot.
 var controller = Botkit.slackbot(bot_options);
 controller.startTicking();
+// controller.storage.teams.save({id: 'cool', something: 'no'}, (err) => console.log(err));
+// var beans = controller.storage.teams.get('cool');
+// controller.storage.teams.all();
+// console.log('got here', beans);
 
 // Set up an Express-powered webserver to expose oauth and webhook endpoints
 var webserver = require(__dirname + '/components/express_webserver.js')(controller);

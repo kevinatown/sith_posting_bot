@@ -60,6 +60,7 @@ module.exports = function(controller) {
 
   });
   
+  
   // 
   // TODO: enable this once the room code is enabled
   // 

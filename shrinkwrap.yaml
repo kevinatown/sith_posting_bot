@@ -1,13 +1,13 @@
 dependencies:
   body-parser: 1.18.3
   botkit: 0.6.16
-  botkit-storage-firebase: 1.0.1
   botkit-storage-mongo: 1.0.7
   botkit-studio-metrics: 0.0.2
   cookie-parser: 1.4.3
   debug: 2.6.9
   express: 4.16.3
   express-hbs: 1.0.4
+  firebase: 3.9.0
   lodash: 4.17.10
   moment: 2.22.2
   node-env-file: 0.1.8
@@ -738,12 +738,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-KH5GTskHvTSozRPLdn8EQtg34zc71VUo+wXYzcoafRCkGVqqxB4AitUqow8y8ENiHgJW3oY2Pvhd8glcZiraOA==
-  /botkit-storage-firebase/1.0.1:
-    dependencies:
-      firebase: 3.9.0
-    dev: false
-    resolution:
-      integrity: sha1-Uu/53bNjBzQE2+FrZPCYA0YvAMs=
   /botkit-storage-mongo/1.0.7:
     dependencies:
       monk: 6.0.6
@@ -3094,13 +3088,13 @@ shrinkwrapVersion: 3
 specifiers:
   body-parser: ^1.15.2
   botkit: ^0.6.12
-  botkit-storage-firebase: ^1.0.1
   botkit-storage-mongo: ^1.0.6
   botkit-studio-metrics: ^0.0.2
   cookie-parser: ^1.4.3
   debug: ^2.3.3
   express: ^4.14.0
   express-hbs: ^1.0.4
+  firebase: ^3.0.4
   lodash: 4.x.x
   moment: ^2.22.1
   node-env-file: ^0.1.8
