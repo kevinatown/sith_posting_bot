@@ -87,8 +87,8 @@ function save(firebaseRef) {
  * @returns {Function} The all function
  */
 function all(firebaseRef) {
-    return function(cb) {
-        firebaseRef.once('value').then(function success(records) {
+    return async function(cb) {
+       await firebaseRef.once('value').then(function success(records) {
             var results = records.val();
             if (!results) {
                 return cb(null, []);

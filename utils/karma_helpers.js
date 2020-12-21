@@ -60,8 +60,30 @@ const removeKarma = async (user, controller) => {
   }
 };
 
+const getAllUsers = async (controller) => {
+  let users = [];
+  await controller.storage.users.all((err, val) => {
+    users = val;
+  });
+  return users;
+};
+
+
+const formatUsersKarma = (users) => {
+  const roomKarma = _.sumBy(users, 'karma');
+  let lines = roomKarma >= 0 ? 
+    `I am a Jedi. I’m one with the Force, and the Force will guide me\nEveryone's karma is at ${roomKarma}\n` :
+    `Good, good, let the hate flow through you\nEveryone's karma is at ${roomKarma}\n`;
+  _.forEach(users, (user) => {
+    lines = `${lines}<@${user.id}>: ${user.karma}\n`
+  });
+  return { lines, roomKarma };
+};
+
 module.exports = {
   addKarma,
   removeKarma,
-  getCurrentKarma
+  getCurrentKarma,
+  getAllUsers,
+  formatUsersKarma
 };
