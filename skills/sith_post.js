@@ -1,21 +1,14 @@
 const wordfilter = require('wordfilter');
 const _ = require('lodash');
 const moment = require('moment');
-const { starWarsLines } = require('../data/quotes.js');
+const { newRoll } = require('../utils/sith_post_helper');
 
 module.exports = function(controller) {
-  controller.hears(['.*'], 'ambient', function(bot, message) {
-    controller.storage.teams.save({id: 1111, data: 'test'})
-    const line = _.sample(starWarsLines)
-    controller.storage.users.save({
-      id: message.user,
-      karma: 0
-    });
-    if (line.quote) {
-      bot.reply(message, `> *${line.character}* ${line.line}`);
-    } else {
-      bot.reply(message, `> ${line.line}`);
+  
+  controller.hears(['roll it'], 'direct_message,direct_mention,mention', async function(bot, message) {
+    if (message.match) {
+      const value = await newRoll(message.channel, controller);
+      bot.reply(message, `Your new destiny is ${value}`);
     }
   });
-
 };

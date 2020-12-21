@@ -43,14 +43,15 @@ module.exports = function(webserver, controller) {
                     // spin up a bot instance, and start being useful!
                     // We just need to make sure this information is stored somewhere
                     // and handled with care!
-
+                  
                     // In order to do this in the most flexible way, we fire
                     // a botkit event here with the payload so it can be handled
                     // by the developer without meddling with the actual oauth route.
 
                     auth.identity = identity;
+                    console.log(auth)
                     controller.trigger('oauth:success', [auth]);
-
+                    
                     res.cookie('team_id', auth.team_id);
                     res.cookie('bot_user_id', auth.bot.bot_user_id);
                     res.redirect('/login_success.html');

@@ -24,7 +24,7 @@ module.exports = function(controller) {
                 };
                 var new_team= true;
             }
-
+            // console.log(team)
             team.bot = {
                 token: payload.bot.bot_access_token,
                 user_id: payload.bot.bot_user_id,
